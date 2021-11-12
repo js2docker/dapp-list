@@ -1,0 +1,795 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Archivo">
+  <link rel="icon" href="/logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	
+<style>
+* {
+  box-sizing: border-box;
+}
+
+.grid-container {
+  display: inline-grid;
+  grid-template-columns: 80px 80px 80px;
+  grid-row-gap: 10px;
+  grid-column-gap: 10px;
+  margin: 15px;
+}
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50px;
+  padding: 10px;
+  font-size: 30px;
+  text-align: center;
+  line-height: 0.9;
+}
+.grid-item:hover {
+    background-color: #fff;
+    cursor:pointer;
+}
+.participant{
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    vertical-align: middle;
+
+    -webkit-border-radius: 50px;
+       -moz-border-radius: 50px;
+            border-radius: 50px;
+}
+.participant i {
+    font-size: 50px;
+}
+
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #3e8e41;
+}
+
+#myInput {
+  box-sizing: border-box;
+  background-image: url('searchicon.png');
+  background-position: 14px 12px;
+  background-repeat: no-repeat;
+  font-size: 16px;
+  padding: 14px 20px 12px 45px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+}
+
+#myInput:focus {outline: 3px solid #ddd;}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: show;
+  position: absolute;
+  background-color: #f6f6f6;
+  min-width: 230px;
+  overflow: auto;
+  border: 1px solid #ddd;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+.pancakeswap {
+    background: #2874F0;
+
+}
+.bakery {
+    background: #FFC874;
+
+}
+.autofarm {
+    background: #E33442;
+
+}
+.venus {
+    background: #F9E0AE;
+
+}
+.cream {
+    background: #F1F2F4;
+
+}
+.ditto {
+    background: #F8CDEA;
+
+}
+.pancakebunny {
+    background: #EC6998;
+    border: 1px solid rgba(0, 0, 0, 0);
+
+}
+.bdollar {
+    background: #000000;
+    border: 1px solid rgba(0, 0, 0, 0);
+}
+
+.app {
+    background: #ffff;
+    border: 0.1px solid #EEE9FD;
+}
+
+.example-label {
+  display: table-cell;
+  font-size: 14px;
+  margin-left: 8px;
+  min-width: 100px;
+}
+
+.example-button-row {
+  display: table-cell;
+  width: 490px;
+}
+
+.example-button-row .mat-button-base {
+  margin: 8px 8px 8px 0;
+}
+
+.example-flex-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.example-button-container {
+  display: flex;
+  justify-content: center;
+  width: 120px;
+}
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:700");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* by default include the background of the option for the home navigation */
+body {
+  background: #EEE9FD;
+  color: #010101;
+  /* center in the viewport */
+  min-height: 40vh;
+  display: grid;
+  font-family: "Archivo", sans-serif;
+  /* transition for the change in bg color */
+  transition: background 0.2s ease-out;
+
+}
+
+/* display the anchor link side by side  */
+nav {
+  display: flex;
+  background: #fff;
+  /* considerable whitespace surrounding the navigation's items */
+  padding: 2rem 3.15rem;
+  border-radius: 0 0 30px 30px;
+  box-shadow: 0 1px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* remove default style and slightly separate the anchor links from one another */
+a {
+  color: inherit;
+  text-decoration: none;
+  
+  /* display the svg icon and span elements side by side, vertically aligned */
+  display: flex;
+  align-items: center;
+  /* include padding for the background applied on the active item */
+  padding: 0.75rem 1.25rem;
+  border-radius: 30px;
+  /* position relative for the pseudo element */
+  position: relative;
+  /* custom properties for the colors picked up by the elements when clicked (and updated for each link in the script) */
+  --hover-bg: #5b37b720;
+  --hover-c: #5b37b7;
+}
+
+/* include considerable negative margin to have the svg icon overlapping with the span element */
+a svg {
+  margin-right: -2.5rem;
+  width: 28px;
+  height: 28px;
+  pointer-events: none;
+  /* transition for the change in margin */
+  transition: margin 0.2s ease-out;
+}
+/* by default hide the span element */
+a span {
+  opacity: 0;
+  visibility: hidden;
+  font-size: 0.9rem;
+  margin-left: 0.9rem;
+}
+/* include with a pseudo element relative to the anchor link a circle, with a fixed with and height */
+a:before {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 0;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  /* positioned to the left of the anchor link and scaled to 0 */
+  transform: translate(0%, -50%) scale(0);
+  visibility: visible;
+  opacity: 1;
+}
+/* when active */
+/* specify the colors dictated by the custom properties */
+a.active {
+  background: var(--hover-bg);
+  color: var(--hover-c);
+}
+/* using the color specified by the then updated custom property show the circle of the pseudo element increasing its size and highlighting it momentarily */
+a.active:before {
+  background: var(--hover-c);
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(0%, -50%) scale(2);
+  /* transition only when the class is applied */
+  transition: all 0.4s ease-out;
+}
+/* remove the margin applied to the svg to make it overlay atop the anchor link */
+a.active svg {
+  margin-right: 0;
+}
+/* show the span element */
+a.active span {
+  visibility: visible;
+  opacity: 1;
+  transition: all 0.2s ease-out;
+}
+
+/* on smaller viewports show the navigation bar on the side, attached to the left of the screen */
+@media (max-width: 500px) {
+  nav {
+    flex-direction: column;
+    justify-self: start;
+    border-radius: 0 30px 30px 0;
+    padding: 2rem 1.15rem 2rem 0.75rem;
+  }
+  /* change the margin separating the anchor link elements now dividing the elements vertically */
+  nav a {
+    margin: 0.5rem 0;
+  }
+  /* remove the negative margin from the svg elements, as the width is to be taken in full */
+  nav svg {
+    margin: 0;
+  }
+}
+
+/* ========== Main Styles ========== */
+@media (min-width: 720px) {
+	#myUL {
+		grid-template-columns: 80px 80px 80px 80px 80px;
+	}
+}
+
+@media (max-width: 480px) {
+	#myUL {
+		grid-template-columns: 80px 80px 80px;
+	}
+}
+
+@media (min-width: 900px) {
+	#myUL {
+		grid-template-columns: 80px 80px 80px 80px 80px 80px;
+	}
+}
+
+@media (min-width: 1024px) {
+  #myUL {
+    grid-template-columns: 80px 80px 80px 80px 80px 80px 80px 80px 80px;
+  }
+}
+
+/* Disable selection with class "noUserSelect" */
+
+.noUserSelect {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+
+
+/* ========== Page header (Top bar) ========== */
+
+.topchartjs {max-width: 100%}
+
+/* Search bar (header) */
+
+.searchBarMain {
+background: #fff;
+  width: 90%;
+  max-width: 360px;
+  margin: 0 auto;
+  height: 42px;
+  margin-top: 11px;
+  border-radius: 50px;
+  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.14);
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+
+  left: 0;
+  right: 0;
+  top: 0;
+  cursor:pointer;
+}
+
+.searchBarMain i.searchBarSearchIcon {
+  height: 100%;
+  line-height: 42px;
+  float: left;
+  width: 52px;
+  text-align: center;
+  color: rgba(68, 68, 68, 0.5);
+}
+
+.searchBarMain input#searchBarInput {
+  height: 42px;
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+  background: transparent;
+  outline: none;
+  padding-right: 32px;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.76);
+  font-weight: 400;
+  font-family: 'Archivo', sans-serif;
+  cursor:pointer;
+}
+
+.searchBarMain i.clearSearchBarField {
+  position: absolute;
+  right: 12px;
+  top: 11px;
+  color: rgba(0, 0, 0, 0.84);
+  display: none;
+  font-size: 20px;
+  cursor:pointer;
+}
+
+img {
+  border-radius: 15px;
+  margin-top: 9px;
+}
+* {box-sizing: border-box}
+body {font-family: 'Archivo', sans-serif; margin:0}
+.mySlides {display: none}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+  padding-top: 50px;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 57%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+#myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 12px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#myUL {
+  list-style-type: none;
+
+    display: inline-grid;
+    grid-column-gap: 50px;
+    text-align: center;
+
+}
+
+.center {
+  margin: auto;
+  
+  display:block;
+  margin-top: 20px;
+  box-sizing: border-box;
+}
+
+#myUL li a {
+  display: inline-block;
+
+    margin: 0 2.2% 24px;
+    padding: 12px 6px;
+    text-align: center;
+    border: 1px solid #CECECE;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    width: 100px;
+    font-size: 15px;
+background-color: #ffff;
+}
+
+#myUL li a:hover:not(.header) {
+  background-color: #eee;
+}
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #fff;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+.size-image {max-width: 114px;
+background-color: #2874F0}
+
+.active, .dot:hover {
+  background-color: #000;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: black;
+  border-bottom: 2px solid #3651FA;
+  min-width: 400px;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  
+  text-decoration: none;
+  font-size: 17px;
+  border-radius: 3px;
+}
+
+.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.topnav .icon {
+  display: none;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 17px;    
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.topnav a:hover, .dropdown:hover .dropbtn {
+  background-color: white;
+  color: black;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav a:not(:first-child), .dropdown .dropbtn {
+    display: none;
+  }
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .topnav.responsive {position: relative;}
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .topnav.responsive .dropdown {float: none;}
+  .topnav.responsive .dropdown-content {position: relative;}
+  .topnav.responsive .dropdown .dropbtn {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+}
+.text-box {
+    margin-left: 44vw;
+	 margin-top: 42vh;
+}
+
+.btn:link,
+.btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+    display: inline-block;
+    border-radius: 100px;
+    transition: all .2s;
+    position: absolute;
+    color: black
+}
+
+.btn:hover {
+    transform: translateY(3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-white {
+    background-color: #fff;
+    color: #777;
+}
+
+.btn::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+}
+
+.btn-white::after {
+    background-color: #fff;
+}
+
+.btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+.btn-animated {
+    animation: moveInBottom 5s ease-out;
+    animation-fill-mode: backwards;
+}
+
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+</style>
+	
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+<header class="page-header">
+	<title> Cronos Space | List of Projects launched on Cronos Blockchain </title>
+
+  <div class="topnav" id="myTopnav">
+  <a href="https://cronos.space" class="active">Home</a>
+  <a href="mailto:listing@cronos.space" >List Your Project ↗️</a>
+  <a href="https://discord.gg">Join our Community</a>
+  
+  <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+  <a href="#" class="btn btn-white btn-animate" style="display: none;">Claim Rewards</a>
+</div>
+
+	<center>
+		
+	<img style='margin-top:30px; max-width: 180px' src='/logo.png'>
+
+</center>
+
+	<div class="searchBarMain">
+		<i class="material-icons searchBarSearchIcon noUserSelect">search</i>
+		<input type="text" name="header-search" value="" id="searchBarInput" onkeyup="weFunction()" autofocus>
+	
+		<i class="material-icons clearSearchBarField noUserSelect" onClick="resetInput()">clear</i>
+	</div>
+
+	<center>
+
+<div class='center' id="listy" style="font-family: 'Archivo', sans-serif;margin-right: 20px;">
+<ul id="myUL">
+
+ <li><a href="https://swap.crodex.app/#/swap"><div class="app participant img-circle"><img src="/project-logos/crodex.png" ></div>Crodex</a></li>
+
+  <li><a href="https://vvs.finance/"><div class="app participant img-circle"><img src="/project-logos/vvsfinance.png" ></div>VVS.Finance</a></li>
+
+<li><a href="https://app.empiredex.org/farm"><div class="app participant img-circle"><img src="/project-logos/empiredex.png" ></div>Empire Dex</a></li>
+
+ <li><a href="https://photonswap.finance/"><div class="app participant img-circle"><img src="/project-logos/photonswap.png" ></div>Photonswap</a></li>
+
+ <li><a href="https://dexpad.io/"><div class="app participant img-circle"><img src="/project-logos/dexpad.png" ></div>Dexpad</a></li>
+
+ <li><a href="https://app.cronaswap.org/swap"><div class="app participant img-circle"><img src="/project-logos/cronaswap.png" ></div>Cronaswap</a></li>
+
+ <li><a href="https://dexscreener.com/cronos"><div class="app participant img-circle"><img src="/project-logos/dexscreener.png"></div>Dexscreener</a></li>
+
+  <li><a href=" "><div class="app participant img-circle"><img src="/project-logos/coming-soon.png" ></div>Projects listed soon...</a></li>
+
+
+</ul>
+	
+</div>
+</center>
+</header>
+</head>
+	
+<script>
+function weFunction() {
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("searchBarInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+
+function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+	</script>
+</body>
+</html>
